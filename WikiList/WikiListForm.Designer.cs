@@ -1,6 +1,6 @@
 ﻿namespace WikiList
 {
-    partial class Form1
+    partial class WikiListForm
     {
         /// <summary>
         ///  Required designer variable.
