@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WikiList
 {
+    [Serializable]
     internal class Information : IComparable<Information>
     {
         private string name; 
@@ -30,7 +31,8 @@ namespace WikiList
 
         public string gsIsLinear
         {
-           get {
+            get
+            {
                 if (isLinear)
                 {
                     return "Linear";
@@ -39,10 +41,12 @@ namespace WikiList
                 {
                     return "Non-Linear";
                 }
-                }
-           set {
+            }
+            set
+            {
                 char temp = value[0];
-                switch (temp){
+                switch (temp)
+                {
                     case 'l':
                     case 'L':
                         isLinear = true;

@@ -44,16 +44,18 @@
             this.textBoxDef = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.radioButtonL = new System.Windows.Forms.RadioButton();
+            this.radioButtonN = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCat = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -63,10 +65,6 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.listView = new System.Windows.Forms.ListView();
-            this.ColName = new System.Windows.Forms.ColumnHeader();
-            this.ColCategory = new System.Windows.Forms.ColumnHeader();
-            this.ColStructure = new System.Windows.Forms.ColumnHeader();
-            this.ColDefinition = new System.Windows.Forms.ColumnHeader();
             this.titleBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -78,8 +76,10 @@
             this.panel5.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.groupBox.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -184,12 +184,12 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.statusStrip1);
+            this.panel3.Controls.Add(this.statusStrip);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 30);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(235, 539);
+            this.panel3.Size = new System.Drawing.Size(235, 567);
             this.panel3.TabIndex = 1;
             // 
             // panel5
@@ -207,7 +207,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 50);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(8, 50, 8, 10);
-            this.panel5.Size = new System.Drawing.Size(235, 467);
+            this.panel5.Size = new System.Drawing.Size(235, 495);
             this.panel5.TabIndex = 2;
             // 
             // panel9
@@ -215,23 +215,24 @@
             this.panel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel9.AutoSize = true;
             this.panel9.Controls.Add(this.textBoxDef);
-            this.panel9.Location = new System.Drawing.Point(8, 224);
+            this.panel9.Location = new System.Drawing.Point(8, 242);
             this.panel9.MaximumSize = new System.Drawing.Size(0, 400);
             this.panel9.MinimumSize = new System.Drawing.Size(0, 230);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5, 3, 5, 0);
-            this.panel9.Size = new System.Drawing.Size(219, 236);
+            this.panel9.Size = new System.Drawing.Size(219, 246);
             this.panel9.TabIndex = 10;
             // 
             // textBoxDef
             // 
             this.textBoxDef.BackColor = System.Drawing.Color.White;
             this.textBoxDef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxDef.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxDef.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDef.Location = new System.Drawing.Point(5, 3);
             this.textBoxDef.Multiline = true;
             this.textBoxDef.Name = "textBoxDef";
-            this.textBoxDef.Size = new System.Drawing.Size(209, 233);
+            this.textBoxDef.Size = new System.Drawing.Size(209, 243);
             this.textBoxDef.TabIndex = 2;
             // 
             // label4
@@ -239,7 +240,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(8, 203);
+            this.label4.Location = new System.Drawing.Point(8, 218);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 21);
@@ -248,38 +249,53 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.radioButton2);
-            this.panel8.Controls.Add(this.radioButton1);
+            this.panel8.Controls.Add(this.groupBox);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(8, 173);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5, 3, 5, 0);
-            this.panel8.Size = new System.Drawing.Size(219, 30);
+            this.panel8.Size = new System.Drawing.Size(219, 45);
             this.panel8.TabIndex = 8;
             // 
-            // radioButton2
+            // groupBox
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.Location = new System.Drawing.Point(79, 6);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 21);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Non-Linear";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.groupBox.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox.Controls.Add(this.radioButtonL);
+            this.groupBox.Controls.Add(this.radioButtonN);
+            this.groupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox.ForeColor = System.Drawing.Color.Black;
+            this.groupBox.Location = new System.Drawing.Point(5, 3);
+            this.groupBox.Margin = new System.Windows.Forms.Padding(0);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox.Size = new System.Drawing.Size(209, 42);
+            this.groupBox.TabIndex = 0;
+            this.groupBox.TabStop = false;
             // 
-            // radioButton1
+            // radioButtonL
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.Location = new System.Drawing.Point(12, 6);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(61, 21);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Linear";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonL.AutoSize = true;
+            this.radioButtonL.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonL.Location = new System.Drawing.Point(110, 12);
+            this.radioButtonL.Name = "radioButtonL";
+            this.radioButtonL.Size = new System.Drawing.Size(61, 21);
+            this.radioButtonL.TabIndex = 0;
+            this.radioButtonL.TabStop = true;
+            this.radioButtonL.Text = "Linear";
+            this.radioButtonL.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonN
+            // 
+            this.radioButtonN.AutoSize = true;
+            this.radioButtonN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.radioButtonN.Location = new System.Drawing.Point(3, 12);
+            this.radioButtonN.Name = "radioButtonN";
+            this.radioButtonN.Size = new System.Drawing.Size(91, 21);
+            this.radioButtonN.TabIndex = 1;
+            this.radioButtonN.TabStop = true;
+            this.radioButtonN.Text = "Non-Linear";
+            this.radioButtonN.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -295,7 +311,7 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.comboBox1);
+            this.panel7.Controls.Add(this.comboBoxCat);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(8, 122);
             this.panel7.Name = "panel7";
@@ -303,14 +319,14 @@
             this.panel7.Size = new System.Drawing.Size(219, 30);
             this.panel7.TabIndex = 6;
             // 
-            // comboBox1
+            // comboBoxCat
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(5, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(209, 23);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxCat.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBoxCat.FormattingEnabled = true;
+            this.comboBoxCat.Location = new System.Drawing.Point(5, 3);
+            this.comboBoxCat.Name = "comboBoxCat";
+            this.comboBoxCat.Size = new System.Drawing.Size(209, 23);
+            this.comboBoxCat.TabIndex = 0;
             // 
             // label1
             // 
@@ -338,6 +354,7 @@
             // 
             this.textBoxName.BackColor = System.Drawing.Color.White;
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxName.Location = new System.Drawing.Point(5, 3);
             this.textBoxName.Name = "textBoxName";
@@ -356,14 +373,22 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Name";
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.BackColor = System.Drawing.Color.AliceBlue;
-            this.statusStrip1.Location = new System.Drawing.Point(0, 517);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(235, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.BackColor = System.Drawing.Color.AliceBlue;
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 545);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(235, 22);
+            this.statusStrip.TabIndex = 1;
+            this.statusStrip.Text = "statusStrip";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(46, 17);
+            this.toolStripStatusLabel.Text = "Loaded";
             // 
             // panel4
             // 
@@ -381,6 +406,7 @@
             // 
             this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(103)))), ((int)(((byte)(177)))));
             this.buttonDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonDelete.FlatAppearance.BorderSize = 0;
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -392,11 +418,13 @@
             this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonEdit
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(103)))), ((int)(((byte)(177)))));
             this.buttonEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonEdit.FlatAppearance.BorderSize = 0;
             this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -408,11 +436,13 @@
             this.buttonEdit.TabIndex = 1;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(103)))), ((int)(((byte)(177)))));
             this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonAdd.FlatAppearance.BorderSize = 0;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -424,6 +454,7 @@
             this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // panel11
             // 
@@ -440,6 +471,7 @@
             // buttonSearch
             // 
             this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(103)))), ((int)(((byte)(177)))));
+            this.buttonSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSearch.FlatAppearance.BorderSize = 0;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
@@ -453,11 +485,13 @@
             // 
             // textBoxSearch
             // 
+            this.textBoxSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxSearch.Location = new System.Drawing.Point(10, 14);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(358, 23);
             this.textBoxSearch.TabIndex = 0;
+            this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
             // 
             // panel10
             // 
@@ -472,33 +506,28 @@
             this.panel10.MinimumSize = new System.Drawing.Size(449, 488);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
-            this.panel10.Size = new System.Drawing.Size(449, 489);
+            this.panel10.Size = new System.Drawing.Size(449, 517);
             this.panel10.TabIndex = 4;
             // 
             // listView
             // 
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ColName,
-            this.ColCategory,
-            this.ColStructure,
-            this.ColDefinition});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.FullRowSelect = true;
+            this.listView.GridLines = true;
             this.listView.Location = new System.Drawing.Point(10, 0);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(429, 479);
+            this.listView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listView.Size = new System.Drawing.Size(429, 507);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
-            // 
-            // ColStructure
-            // 
-            this.ColStructure.Tag = "";
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // WikiListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 569);
+            this.ClientSize = new System.Drawing.Size(684, 597);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel3);
@@ -523,10 +552,13 @@
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -553,7 +585,7 @@
         private Button buttonDelete;
         private Button buttonEdit;
         private Button buttonAdd;
-        private StatusStrip statusStrip1;
+        private StatusStrip statusStrip;
         private TextBox textBoxDef;
         private Panel panel5;
         private TextBox textBoxName;
@@ -562,8 +594,8 @@
         private Panel panel7;
         private Label label1;
         private Panel panel8;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton radioButtonN;
+        private RadioButton radioButtonL;
         private Label label3;
         private Panel panel9;
         private Label label4;
@@ -572,10 +604,8 @@
         private TextBox textBoxSearch;
         private Panel panel10;
         private ListView listView;
-        private ColumnHeader ColName;
-        private ColumnHeader ColCategory;
-        private ColumnHeader ColStructure;
-        private ColumnHeader ColDefinition;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxCat;
+        private ToolStripStatusLabel toolStripStatusLabel;
+        private GroupBox groupBox;
     }
 }

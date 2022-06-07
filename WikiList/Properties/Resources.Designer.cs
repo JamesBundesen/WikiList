@@ -61,6 +61,20 @@ namespace WikiList.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Array
+        ///List
+        ///Tree
+        ///Graphs
+        ///Abstract
+        ///Hash.
+        /// </summary>
+        internal static string Categories {
+            get {
+                return ResourceManager.GetString("Categories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap close {
@@ -77,6 +91,16 @@ namespace WikiList.Properties {
             get {
                 object obj = ResourceManager.GetObject("closeHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] defaultValues {
+            get {
+                object obj = ResourceManager.GetObject("defaultValues", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
