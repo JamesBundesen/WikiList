@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.titleBar = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +89,7 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(33)))));
-            this.titleBar.Controls.Add(this.label5);
+            this.titleBar.Controls.Add(this.labelTitle);
             this.titleBar.Controls.Add(this.panel2);
             this.titleBar.Controls.Add(this.panel1);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -100,14 +100,14 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(256, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 21);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "WikiList";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(256, 5);
+            this.labelTitle.Name = "label5";
+            this.labelTitle.Size = new System.Drawing.Size(65, 21);
+            this.labelTitle.TabIndex = 4;
+            this.labelTitle.Text = "WikiList";
             // 
             // panel2
             // 
@@ -561,6 +561,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WikiListForm";
             this.Text = "WikiList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WikiListForm_FormClosing);
             this.Load += new System.EventHandler(this.WikiListForm_Load);
             this.titleBar.ResumeLayout(false);
             this.titleBar.PerformLayout();
@@ -634,6 +635,6 @@
         private ComboBox comboBoxCat;
         private ToolStripStatusLabel StatusStripLabel;
         private GroupBox groupBox;
-        private Label label5;
+        private Label labelTitle;
     }
 }

@@ -1,8 +1,13 @@
-﻿namespace WikiList
+﻿
+//      Information.cs        08/06/2022         JB 30038531
+//      ----------------------------------------------------.
+
+namespace WikiList
 {
     [Serializable]
     internal class Information : IComparable<Information>
     {
+        // 6.1
         private string name;
         private bool isLinear;
         private string category;
@@ -17,12 +22,14 @@
 
         }
 
+        // get/set Name
         public string gsName
         {
             get { return name; }
             set { name = value; }
         }
 
+        // get/set isLinear returning string from bool/setting bool from string
         public string gsIsLinear
         {
             get
@@ -55,21 +62,33 @@
             }
         }
 
+        // get/set Category
         public string gsCategory
         {
             get { return category; }
             set { category = value; }
         }
 
+        // get/set Description
         public string gsDescription
         {
             get { return description; }
             set { description = value; }
         }
 
+        // CompareTo Override
         public int CompareTo(Information? other)
         {
             return this.name.CompareTo(other.gsName);
+        }
+
+        // Compares values of two Information objects. If the same returns true
+        public bool Equals(Information? other)
+        {
+            return this.gsName.Equals(other.gsName)
+                && this.gsIsLinear.Equals(other.gsIsLinear)
+                && this.gsCategory.Equals(other.gsCategory)
+                && this.gsDescription.Equals(other.gsDescription);
         }
     }
 }
