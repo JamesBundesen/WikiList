@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WikiList
+﻿namespace WikiList
 {
     [Serializable]
     internal class Information : IComparable<Information>
     {
-        private string name; 
+        private string name;
         private bool isLinear;
         private string category;
         private string description;
 
-        public Information(string name, string gsIsLinear, string category, string description )
+        public Information(string name, string gsIsLinear, string category, string description)
         {
             this.name = name;
             this.gsIsLinear = gsIsLinear;
             this.category = category;
             this.description = description;
-           
+
         }
 
         public string gsName
@@ -44,6 +38,8 @@ namespace WikiList
             }
             set
             {
+                if (value == null)
+                    value = "l";
                 char temp = value[0];
                 switch (temp)
                 {

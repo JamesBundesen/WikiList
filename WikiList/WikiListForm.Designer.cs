@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.titleBar = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +56,7 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -88,13 +89,25 @@
             // titleBar
             // 
             this.titleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(33)))));
+            this.titleBar.Controls.Add(this.label5);
             this.titleBar.Controls.Add(this.panel2);
             this.titleBar.Controls.Add(this.panel1);
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar.Location = new System.Drawing.Point(0, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(684, 30);
+            this.titleBar.Size = new System.Drawing.Size(589, 30);
             this.titleBar.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(256, 5);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 21);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "WikiList";
             // 
             // panel2
             // 
@@ -135,12 +148,14 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -148,7 +163,7 @@
             this.panel1.Controls.Add(this.picMin);
             this.panel1.Controls.Add(this.picMax);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(576, 0);
+            this.panel1.Location = new System.Drawing.Point(481, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(108, 30);
             this.panel1.TabIndex = 1;
@@ -234,6 +249,8 @@
             this.textBoxDef.Name = "textBoxDef";
             this.textBoxDef.Size = new System.Drawing.Size(209, 243);
             this.textBoxDef.TabIndex = 2;
+            this.textBoxDef.TextChanged += new System.EventHandler(this.ctrl_changed);
+            this.textBoxDef.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.handleInput);
             // 
             // label4
             // 
@@ -284,6 +301,7 @@
             this.radioButtonL.TabStop = true;
             this.radioButtonL.Text = "Linear";
             this.radioButtonL.UseVisualStyleBackColor = true;
+            this.radioButtonL.CheckedChanged += new System.EventHandler(this.ctrl_changed);
             // 
             // radioButtonN
             // 
@@ -296,6 +314,7 @@
             this.radioButtonN.TabStop = true;
             this.radioButtonN.Text = "Non-Linear";
             this.radioButtonN.UseVisualStyleBackColor = true;
+            this.radioButtonN.CheckedChanged += new System.EventHandler(this.ctrl_changed);
             // 
             // label3
             // 
@@ -327,6 +346,8 @@
             this.comboBoxCat.Name = "comboBoxCat";
             this.comboBoxCat.Size = new System.Drawing.Size(209, 23);
             this.comboBoxCat.TabIndex = 0;
+            this.comboBoxCat.TextChanged += new System.EventHandler(this.ctrl_changed);
+            this.comboBoxCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.handleInput);
             // 
             // label1
             // 
@@ -360,6 +381,9 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(209, 23);
             this.textBoxName.TabIndex = 3;
+            this.textBoxName.TextChanged += new System.EventHandler(this.ctrl_changed);
+            this.textBoxName.DoubleClick += new System.EventHandler(this.textBoxName_DoubleClick);
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.handleInput);
             // 
             // label2
             // 
@@ -377,18 +401,18 @@
             // 
             this.statusStrip.BackColor = System.Drawing.Color.AliceBlue;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.StatusStripLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 545);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(235, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip";
             // 
-            // toolStripStatusLabel
+            // StatusStripLabel
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(46, 17);
-            this.toolStripStatusLabel.Text = "Loaded";
+            this.StatusStripLabel.Name = "StatusStripLabel";
+            this.StatusStripLabel.Size = new System.Drawing.Size(46, 17);
+            this.StatusStripLabel.Text = "Loaded";
             // 
             // panel4
             // 
@@ -465,7 +489,7 @@
             this.panel11.Location = new System.Drawing.Point(235, 30);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(10, 14, 10, 10);
-            this.panel11.Size = new System.Drawing.Size(449, 50);
+            this.panel11.Size = new System.Drawing.Size(354, 50);
             this.panel11.TabIndex = 3;
             // 
             // buttonSearch
@@ -475,13 +499,14 @@
             this.buttonSearch.FlatAppearance.BorderSize = 0;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(364, 14);
+            this.buttonSearch.Location = new System.Drawing.Point(269, 14);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxSearch
             // 
@@ -489,9 +514,10 @@
             this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxSearch.Location = new System.Drawing.Point(10, 14);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(358, 23);
+            this.textBoxSearch.Size = new System.Drawing.Size(263, 23);
             this.textBoxSearch.TabIndex = 0;
-            this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.handleInput);
             // 
             // panel10
             // 
@@ -503,10 +529,10 @@
             this.panel10.Controls.Add(this.listView);
             this.panel10.Location = new System.Drawing.Point(235, 80);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
-            this.panel10.MinimumSize = new System.Drawing.Size(449, 488);
+            this.panel10.MinimumSize = new System.Drawing.Size(300, 488);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(10, 0, 10, 10);
-            this.panel10.Size = new System.Drawing.Size(449, 517);
+            this.panel10.Size = new System.Drawing.Size(354, 517);
             this.panel10.TabIndex = 4;
             // 
             // listView
@@ -517,7 +543,7 @@
             this.listView.Location = new System.Drawing.Point(10, 0);
             this.listView.Name = "listView";
             this.listView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.listView.Size = new System.Drawing.Size(429, 507);
+            this.listView.Size = new System.Drawing.Size(334, 507);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
@@ -527,7 +553,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(684, 597);
+            this.ClientSize = new System.Drawing.Size(589, 597);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel3);
@@ -537,6 +563,7 @@
             this.Text = "WikiList";
             this.Load += new System.EventHandler(this.WikiListForm_Load);
             this.titleBar.ResumeLayout(false);
+            this.titleBar.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -605,7 +632,8 @@
         private Panel panel10;
         private ListView listView;
         private ComboBox comboBoxCat;
-        private ToolStripStatusLabel toolStripStatusLabel;
+        private ToolStripStatusLabel StatusStripLabel;
         private GroupBox groupBox;
+        private Label label5;
     }
 }
